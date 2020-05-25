@@ -1,6 +1,6 @@
 package jackie.learn.jmx;
 
-public class HelloJMX implements HelloJMXMBean {
+public class HelloJMXMBean2 implements HelloJMXMBean2MBean {
 	private String userName;
 	public void sayHello() {
 		if (this.userName == null) {
