@@ -10,21 +10,16 @@ import javax.management.MalformedObjectNameException;
 import javax.management.NotCompliantMBeanException;
 import javax.management.ObjectName;
 
-/**
- * 测试
- * @author Jackie
- *
- */
 public class App {
 	public static void main(String[] args) throws InterruptedException, MalformedObjectNameException,
 			InstanceAlreadyExistsException, MBeanRegistrationException, NotCompliantMBeanException {
 		// Agent
 		MBeanServer mServer = ManagementFactory.getPlatformMBeanServer();
-		HelloJMXMBean2 myJMX = new HelloJMXMBean2();
-		ObjectName helloON = new ObjectName("aaaa:type=bbbb,name=helloJMX_cccc");
-		mServer.registerMBean(myJMX, helloON);
+		HelloJMX helloJMX = new HelloJMX();
+		ObjectName helloON = new ObjectName("jackie:name=helloJMX");
+		mServer.registerMBean(helloJMX, helloON);
 
-		new MyThread(myJMX).start();
+		new MyThread(helloJMX).start();
 		
 		new CountDownLatch(1).await();
 
@@ -32,8 +27,8 @@ public class App {
 }
 
 class MyThread extends Thread{
-	HelloJMXMBean2 helloJMX;
-	public MyThread( HelloJMXMBean2 helloJMX) {
+	HelloJMX helloJMX;
+	public MyThread( HelloJMX helloJMX) {
 		this.helloJMX = helloJMX;
 	}
 	

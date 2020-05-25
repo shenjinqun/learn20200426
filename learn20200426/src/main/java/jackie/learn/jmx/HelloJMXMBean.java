@@ -1,6 +1,6 @@
 package jackie.learn.jmx;
 
-public interface HelloJMXMBean2MBean {
+public interface HelloJMXMBean {
 	void sayHello();
 
 	void setUserName(String userName);
